@@ -1,13 +1,12 @@
 using System.Configuration;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using scmt_backend.Data;
 using scmt_backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Configurar MailgunOptions
-// builder.Services.Configure<MailgunOptions>(builder.Configuration.GetSection("Mailgun"));
 
 // Registar o serviço de envio de e-mail
 builder.Services.AddTransient<IEmailService, EmailService>();
@@ -26,6 +25,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 // Adicione MVC
 builder.Services.AddControllersWithViews();
 
+
 var app = builder.Build();
 
 // Configure o pipeline de requisições
@@ -42,6 +42,9 @@ app.UseRouting();
 // Middleware de autenticação e autorização
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Middleware de identificação
+app.UseMiddleware<CheckUserExistsMiddleware>();
 
 // Mapeamento de rotas
 app.MapRazorPages(); // Adicione isto para mapear as páginas do Identity
