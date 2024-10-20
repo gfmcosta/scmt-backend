@@ -33,7 +33,7 @@ public class EmailService : IEmailService
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress(_config["Smtp:Username"]),
+                From = new MailAddress(_config["Smtp:Username"], _config["Smtp:FriendlyName"]),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
