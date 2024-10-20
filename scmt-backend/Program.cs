@@ -7,10 +7,10 @@ using scmt_backend.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurar MailgunOptions
-builder.Services.Configure<MailgunOptions>(builder.Configuration.GetSection("Mailgun"));
+// builder.Services.Configure<MailgunOptions>(builder.Configuration.GetSection("Mailgun"));
 
 // Registar o serviço de envio de e-mail
-builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 // Adicione o contexto do banco de dados
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
