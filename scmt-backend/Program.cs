@@ -16,7 +16,7 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configure the ASP.NET Core Identity with roles
+// Configurar o ASP.NET Core Identity com roles/cargos
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     {
         options.SignIn.RequireConfirmedAccount = true; // Exige confirmação de conta
@@ -25,7 +25,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     .AddDefaultTokenProviders();
 
 
-// Adicione MVC
+// Adicionar MVC
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
@@ -39,7 +39,7 @@ using (var scope = app.Services.CreateScope())
     await SeedUsers.Initialize(services);
 }
 
-// Configure o pipeline de requisições
+// Configure o pipeline de requests
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -54,11 +54,11 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Middleware de identificação
+// Middleware de identificação de utilizador
 app.UseMiddleware<CheckUserExistsMiddleware>();
 
 // Mapeamento de rotas
-app.MapRazorPages(); // Adicione isto para mapear as páginas do Identity
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
