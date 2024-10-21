@@ -1,0 +1,153 @@
+﻿@{
+ViewData["Title"] = "Developers";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="container">
+    <h1>Meet Our Developers</h1>
+
+    <!-- Box principal ocupando toda a largura -->
+    <div class="main-box">
+        <div class="box-content">
+            <div class="icons">
+                <img src="/img/ipt-logo.png" alt="IPT Logo" class="icon-image">
+                <img src="/img/scmt-logo.png" alt="SCMT Logo" class="icon-image">
+            </div>
+            <h2>Portal da Santa Casa da Misericórdia de Tomar </h2>
+            <h3>Backend</h3>
+            <div class="box-p">
+                <p>
+                    Este projeto foi desenvolvido no âmbito da unidade curricular de Projeto Final da Licenciatura em Engenharia Informática, no Instituto Politécnico de Tomar (IPT). O IPT tem uma longa tradição no ensino superior, preparando estudantes para as exigências do mercado de trabalho e promovendo a inovação tecnológica. Com um currículo abrangente e focado em práticas de engenharia, o IPT capacita os seus alunos com conhecimentos práticos e teóricos, permitindo o desenvolvimento de projetos como este, que visa resolver problemas reais com soluções tecnológicas inovadoras.
+                </p>
+                <p>
+                    O projeto foi desenvolvido em colaboração com a Santa Casa da Misericórdia de Tomar (SCMT), uma instituição com uma missão social importante, focada no apoio à comunidade local através de diversos serviços. Este projeto visa modernizar e melhorar a gestão de informações dentro da SCMT, tornando os processos mais eficientes e acessíveis. Combinando a experiência acadêmica com as necessidades reais da SCMT, este projeto busca demonstrar a capacidade de aplicar soluções tecnológicas no contexto social, promovendo a inovação e o bem-estar na comunidade.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Boxes dos programadores -->
+    <div class="row">
+        <div class="col">
+            <div class="dev-box">
+                <img src="https://avatars.githubusercontent.com/u/55167343?v=4" alt="Developer Image" class="dev-image">
+                <h3>Gonçalo Filipe M Costa</h3>
+                <h4>Backend Developer</h4>
+
+                <!-- Ícones com links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/-goncalocosta-/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/gfmcosta" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="dev-box">
+                <img src="https://avatars.githubusercontent.com/u/120472343?v=4" alt="Developer Image" class="dev-image">
+                <h3>João Miguel R R Gonçalves</h3>
+                <h4>Frontend Developer</h4>
+                <!-- Ícones com links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/-joaogoncalves-/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/joaomrrg" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .icon-image {
+        width: 150px; /* ajuste conforme necessário */
+        height: auto; /* mantém a proporção */
+        margin: 0 10px; /* espaço entre as imagens */
+    }
+    
+    .main-box {
+        background-color: #f0f8ff;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .box-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .box-p {
+        text-align: justify;
+    }
+
+    .icons {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+
+    .dev-box {
+        background-color: #e6f7ff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .dev-image {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 10px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .col {
+        flex: 1;
+        margin: 0 10px;
+    }
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    h3 {
+        margin-top: 10px;
+        color: #78c23a;
+    }
+
+    .social-links {
+        margin-top: 10px;
+    }
+
+    .social-icon {
+        margin: 0 10px;
+        font-size: 1.5em;
+        color: #333; /* Cor dos ícones */
+        text-decoration: none;
+    }
+
+    .social-icon:hover {
+        color: #0073b1; /* Cor ao passar o mouse */
+    }
+</style>
