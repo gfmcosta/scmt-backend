@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using scmt_backend.Data;
+using scmt_backend.Seeds;
 using scmt_backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,18 +16,28 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configure o ASP.NET Core Identity
-builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+// Configure the ASP.NET Core Identity with roles
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     {
         options.SignIn.RequireConfirmedAccount = true; // Exige confirmação de conta
     })
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
 
 // Adicione MVC
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await SeedRoles.Initialize(services);
+    await SeedUsers.Initialize(services);
+}
 
 // Configure o pipeline de requisições
 if (!app.Environment.IsDevelopment())
