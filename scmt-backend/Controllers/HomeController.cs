@@ -22,6 +22,12 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    [HttpGet("/doc")]
+    public IActionResult Doc()
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
