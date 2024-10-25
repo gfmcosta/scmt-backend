@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using scmt_backend.Data;
 using scmt_backend.Seeds;
 using scmt_backend.Services;
@@ -30,6 +31,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
 
+// Adicionar Swagger Documentation da API
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" }); 
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -56,6 +63,18 @@ app.UseAuthorization();
 
 // Middleware de identificação de utilizador
 app.UseMiddleware<CheckUserExistsMiddleware>();
+
+// Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwagger();
+
+// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = "swagger"; // Set the UI at the app's root
+});
+
+app.MapControllers();
 
 // Mapeamento de rotas
 app.MapRazorPages();
