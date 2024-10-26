@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using scmt_backend.Data;
 
@@ -10,9 +11,11 @@ using scmt_backend.Data;
 namespace scmt_backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241025233723_AddMenuSubmenuFAQ")]
+    partial class AddMenuSubmenuFAQ
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -226,6 +229,7 @@ namespace scmt_backend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("visivel")
+                        .HasMaxLength(50)
                         .HasColumnType("INTEGER");
 
                     b.HasKey("id");
@@ -245,6 +249,7 @@ namespace scmt_backend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("visivel")
+                        .HasMaxLength(50)
                         .HasColumnType("INTEGER");
 
                     b.HasKey("id");
@@ -267,6 +272,7 @@ namespace scmt_backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("visivel")
+                        .HasMaxLength(50)
                         .HasColumnType("INTEGER");
 
                     b.HasKey("id");

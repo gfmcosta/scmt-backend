@@ -1,0 +1,48 @@
+@model IEnumerable<scmt_backend.Models.Menu>
+
+@{
+    ViewData["Title"] = "Lista de Itens do Menu";
+}
+
+<h1>Lista de Itens do Menu</h1>
+
+<p>
+    <a asp-action="Create">Criar novo item no Menu</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.visivel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @if (item.visivel)
+                {
+                <span class="text-success">✔️</span>
+                }
+                else
+                {
+                <span class="text-danger">❌</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
